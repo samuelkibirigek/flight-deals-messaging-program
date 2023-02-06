@@ -1,5 +1,6 @@
 import requests
 from flight_search import FlightSearch
+from datetime import datetime, timedelta
 # used pprint to format output
 # from pprint import pprint
 
@@ -19,10 +20,9 @@ class DataManager:
         return get_response.json()['prices']
 
     def update_data(self, the_sheet):
-        # 6. went ahead to actually update the google sheet iataCode column to have TESTING
+        #6. went ahead to actually update the google sheet iataCode column to have TESTING
         for row in the_sheet:
             search = FlightSearch()
-            # 7.
             code = search.get_destination_code(row['city'])
             iata_code = {
                 "price": {
